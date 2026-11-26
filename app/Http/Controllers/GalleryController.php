@@ -11,7 +11,10 @@ class GalleryController extends Controller
     public function index(Request $request)
     {
         $query = Karya::with(['seniman.profile'])
-            ->where('status_karya', 'tersedia');
+            ->where('status_karya', 'tersedia')
+            ->withCount(['pesanans as total_terjual' => function ($q) {
+                $q->where('status_pesanan', 'selesai');
+            }]);
 
         // Search
         if ($request->filled('search')) {
@@ -35,7 +38,7 @@ class GalleryController extends Controller
                 break;
         }
 
-        $karyas = $query->paginate(12)->withQueryString();
+        $karyas = $query->paginate(12)->appends($request->query());
 
         return view('public.gallery', compact('karyas'));
     }

@@ -116,4 +116,26 @@ public function getRatingStarHtmlAttribute(): string
     }
     return $html;
 }
+
+public function getTotalTerjualAttribute(): int
+{
+    // Gunakan nilai dari withCount jika sudah di-eager-load (lebih efisien)
+    if (array_key_exists('total_terjual', $this->attributes)) {
+        return (int) $this->attributes['total_terjual'];
+    }
+
+    return $this->pesanans()->where('status_pesanan', 'selesai')->count();
+}
+
+public function getTerjualLabelAttribute(): string
+{
+    $jumlah = $this->total_terjual;
+
+    if ($jumlah == 0) {
+        return '';
+    }
+
+    return $jumlah . ' terjual';
+}
+
 }

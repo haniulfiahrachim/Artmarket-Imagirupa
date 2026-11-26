@@ -288,27 +288,63 @@ textarea.form-control { min-height: auto; }
                  STEP 3A — PELANGGAN: Alamat saja
             ══════════════════════════════════ --}}
             <div id="pelangganFields" class="{{ old('role', 'pelanggan') === 'pelanggan' ? 'show' : '' }}">
-                <div class="step-indicator mb-3">
-                    <div class="step-dot">3</div> Informasi Tambahan
-                </div>
-                <div class="section-box">
-                    <div class="section-title">
-                        <i class="bi bi-house me-1"></i>Data Diri
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label fw-semibold small">Alamat Lengkap</label>
-                        <textarea name="alamat"
-                            class="form-control @error('alamat') is-invalid @enderror"
-                            rows="3"
-                            placeholder="Jl. Contoh No. 1, Kel. Sungai Jawi, Kec. Pontianak Kota, Kota Pontianak...">{{ old('alamat') }}</textarea>
-                        <div class="form-text">
-                            <i class="bi bi-info-circle me-1"></i>
-                            Alamat digunakan untuk keperluan pengiriman karya.
-                        </div>
-                        @error('alamat')<div class="invalid-feedback">{{ $message }}</div>@enderror
-                    </div>
-                </div>
+            <div class="step-indicator mb-3">
+                <div class="step-dot">3</div> Informasi Tambahan
             </div>
+            <div class="section-box">
+                <div class="section-title">
+                    <i class="bi bi-house me-1"></i>Data Diri
+                </div>
+
+        {{-- No HP / WhatsApp --}}
+        <div class="mb-3">
+            <label class="form-label fw-semibold small">
+                No. HP / WhatsApp <span class="text-danger">*</span>
+            </label>
+            <input type="text" name="no_hp"
+                class="form-control @error('no_hp') is-invalid @enderror"
+                placeholder="08xxxxxxxxxx"
+                value="{{ old('no_hp') }}" required>
+            <div class="form-text">
+                <i class="bi bi-shield-check me-1"></i>
+                Wajib diisi untuk verifikasi keaslian pesanan & konfirmasi admin.
+            </div>
+            @error('no_hp')<div class="invalid-feedback">{{ $message }}</div>@enderror
+        </div>
+
+        {{-- Instagram --}}
+        <div class="mb-3">
+            <label class="form-label fw-semibold small">
+                Instagram
+                <span class="badge bg-secondary ms-1" style="font-size:0.6rem;">Opsional</span>
+            </label>
+            <div class="sosmed-wrap">
+                <span class="sosmed-icon">@</span>
+                <input type="text" name="instagram"
+                    class="form-control"
+                    placeholder="username"
+                    value="{{ old('instagram') }}">
+            </div>
+            <div class="form-text">
+                Membantu verifikasi identitas Anda sebagai pembeli.
+            </div>
+        </div>
+
+        {{-- Alamat --}}
+        <div class="mb-3">
+            <label class="form-label fw-semibold small">Alamat Lengkap</label>
+            <textarea name="alamat"
+                class="form-control @error('alamat') is-invalid @enderror"
+                rows="3"
+                placeholder="Jl. Contoh No. 1, Kel. Sungai Jawi, Kec. Pontianak Kota, Kota Pontianak...">{{ old('alamat') }}</textarea>
+            <div class="form-text">
+                <i class="bi bi-info-circle me-1"></i>
+                Alamat digunakan untuk keperluan pengiriman karya.
+            </div>
+            @error('alamat')<div class="invalid-feedback">{{ $message }}</div>@enderror
+        </div>
+    </div>
+</div>
 
             {{-- ══════════════════════════════════
                  STEP 3B — SENIMAN: Profil lengkap

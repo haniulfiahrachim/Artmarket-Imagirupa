@@ -617,9 +617,7 @@ body{
                                         @else
                                             🎨
                                         @endif
-                                        <span class="karya-status-badge {{ $karya->status_karya==='tersedia' ? 'bg-success' : 'bg-danger' }}">
-                                            {{ ucfirst($karya->status_karya) }}
-                                        </span>
+                                        
                                     </div>
                                     <div class="card-body p-3">
                                         <div class="fw-bold text-dark small mb-1">{{ $karya->judul }}</div>

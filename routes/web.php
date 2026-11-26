@@ -62,6 +62,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->grou
     Route::post('/pembayaran/{pembayaran}/verifikasi', [Admin\TransaksiController::class, 'verifikasiPembayaran'])->name('pembayaran.verifikasi');
     Route::post('/pembayaran/{pembayaran}/tolak', [Admin\TransaksiController::class, 'tolakPembayaran'])->name('pembayaran.tolak');
     Route::get('/laporan', [Admin\TransaksiController::class, 'laporan'])->name('laporan');
+    Route::get('/spk', [\App\Http\Controllers\Admin\SpkController::class, 'index'])->name('spk');
 });
 
 /*

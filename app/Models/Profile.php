@@ -13,7 +13,7 @@ class Profile extends Model
     'user_id', 'bio', 'foto', 'link_portofolio',
     'instagram', 'twitter', 'facebook', 'youtube',
     'tiktok', 'website', 'spesialisasi', 'kota',
-    'alamat', 'portofolio_file',
+    'alamat', 'portofolio_file', 'no_hp',
 ];
 
     public function user()

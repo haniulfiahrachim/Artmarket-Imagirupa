@@ -59,6 +59,7 @@ class AuthController extends Controller
         'email'             => 'required|email|unique:users,email',
         'password'          => 'required|min:6|confirmed',
         'role'              => 'required|in:seniman,pelanggan',
+        'no_hp'             => 'required_if:role,pelanggan|nullable|string|max:20',
         // Seniman optional fields
         'bio'               => 'nullable|string|max:1000',
         'spesialisasi'      => 'nullable|string|max:255',
@@ -83,6 +84,7 @@ class AuthController extends Controller
         'foto.image'         => 'Foto harus berupa gambar.',
         'foto.max'           => 'Ukuran foto maksimal 2MB.',
         'portofolio_file.max'=> 'Ukuran file portofolio maksimal 5MB.',
+        'no_hp.required_if' => 'No. HP wajib diisi untuk verifikasi pesanan.',
     ]);
 
     $user = User::create([
@@ -97,6 +99,7 @@ class AuthController extends Controller
     // Dalam method register(), bagian build profileData:
         $profileData = [
             'user_id'         => $user->id,
+            'no_hp'           => $request->no_hp,
             'bio'             => $request->bio,
             'spesialisasi'    => $request->spesialisasi,
             'kota'            => $request->kota,

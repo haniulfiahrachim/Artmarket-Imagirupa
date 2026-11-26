@@ -28,3 +28,11 @@
         <i class="bi bi-bar-chart"></i> Laporan Sistem
     </a>
 </div>
+
+<div class="sidebar-section-title">SPK</div>
+<div class="nav-item">
+    <a href="{{ route('admin.spk') }}"
+       class="nav-link {{ request()->routeIs('admin.spk') ? 'active' : '' }}">
+        <i class="bi bi-trophy"></i> SPK Produk Terpopuler
+    </a>
+</div>

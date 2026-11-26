@@ -433,7 +433,7 @@ body{ background:var(--gray); color:var(--dark); font-family:'Inter',sans-serif;
         {{-- Tab buttons --}}
         <div class="tab-filter mt-3">
             <a href="{{ route('home') }}#karya" class="tab-btn {{ !request('tab') || request('tab')=='terlaris' ? 'active' : '' }}" id="btn-terlaris" onclick="switchTab('terlaris',this);return false;">
-                <i class="bi bi-fire me-1"></i>Terlaris
+                <i class="bi bi-fire me-1"></i>Terpopuler
             </a>
             <a href="#karya" class="tab-btn {{ request('tab')=='termurah' ? 'active' : '' }}" id="btn-termurah" onclick="switchTab('termurah',this);return false;">
                 <i class="bi bi-arrow-down-circle me-1"></i>Harga Termurah
@@ -455,7 +455,7 @@ body{ background:var(--gray); color:var(--dark); font-family:'Inter',sans-serif;
             <div class="row g-4" id="karya">
                 @forelse($terlaris as $karya)
                 <div class="col-sm-6 col-lg-4">
-                    @include('public.partials.karya-card', ['karya' => $karya, 'badgeLabel' => '🔥 Terlaris', 'badgeClass' => 'bg-danger'])
+                    @include('public.partials.karya-card', ['karya' => $karya, 'badgeLabel' => '🔥 Terpopuler', 'badgeClass' => 'bg-danger'])
                 </div>
                 @empty
                 <div class="col-12 text-center py-5 text-muted">

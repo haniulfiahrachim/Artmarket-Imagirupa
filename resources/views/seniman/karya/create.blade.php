@@ -25,7 +25,7 @@
                         <label class="form-label fw-semibold">Judul Karya <span class="text-danger">*</span></label>
                         <input type="text" name="judul"
                             class="form-control @error('judul') is-invalid @enderror"
-                            placeholder="Contoh: Abstrak Khatulistiwa"
+                            placeholder="Contoh: keychain kayu ukir"
                             value="{{ old('judul') }}" required>
                         @error('judul')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
@@ -35,7 +35,7 @@
                         <textarea name="deskripsi"
                             class="form-control @error('deskripsi') is-invalid @enderror"
                             rows="5"
-                            placeholder="Ceritakan tentang karya Anda..." required>{{ old('deskripsi') }}</textarea>
+                            placeholder="Ceritakan tentang karya Anda dan tambahkan kata kunci yang relevan untuk pencarian" required>{{ old('deskripsi') }}</textarea>
                         @error('deskripsi')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
 

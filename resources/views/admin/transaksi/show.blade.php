@@ -66,6 +66,26 @@
                     </div>
                     @endif
                 </div>
+                <div class="col-sm-6">
+            <div class="text-muted small">No. HP / WhatsApp</div>
+            <div class="fw-semibold">
+                {{ $pesanan->pelanggan->profile->no_hp ?? '-' }}
+                @if($pesanan->pelanggan->profile->no_hp)
+                <a href="https://wa.me/{{ preg_replace('/^0/', '62', $pesanan->pelanggan->profile->no_hp) }}"
+                target="_blank" class="btn btn-sm btn-outline-success ms-2" style="padding:1px 8px;font-size:.7rem;">
+                    <i class="bi bi-whatsapp"></i> Chat
+                </a>
+                @endif
+            </div>
+        </div>
+        @if($pesanan->pelanggan->profile->instagram)
+        <div class="col-sm-6">
+            <div class="text-muted small">Instagram</div>
+            <a href="https://instagram.com/{{ $pesanan->pelanggan->profile->instagram }}" target="_blank" class="fw-semibold">
+                @{{ $pesanan->pelanggan->profile->instagram }}
+            </a>
+        </div>
+        @endif
 
                 {{-- Rincian harga --}}
                 <div class="mt-3 p-3 rounded-3" style="background:#f8f8f8;">

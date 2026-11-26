@@ -283,7 +283,7 @@
             </div>
             <div class="col-md-5">
                 <div class="d-flex gap-2 flex-wrap">
-                    @foreach(['terbaru'=>'Terbaru','terlaris'=>'Terlaris','harga_terendah'=>'Harga ↓','harga_tertinggi'=>'Harga ↑'] as $val=>$label)
+                    @foreach(['terbaru'=>'Terbaru','terpopuler'=>'Terpopuler','harga_terendah'=>'Harga ↓','harga_tertinggi'=>'Harga ↑'] as $val=>$label)
                     <a href="{{ route('gallery', array_merge(request()->query(), ['sort'=>$val])) }}"
                         class="btn btn-sm btn-outline-secondary sort-btn {{ request('sort', 'terbaru') === $val ? 'active' : '' }}">
                         {{ $label }}
@@ -331,6 +331,13 @@
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <span class="karya-price">{{ $karya->harga_format }}</span>
                     </div>
+                    @if($karya->total_terjual > 0)
+                    <div class="d-flex align-items-center gap-1 mt-1" style="font-size:.80rem;color:#888;">
+                        <i class="bi bi-bag-check-fill" style="color:#27ae60;font-size:.7rem;"></i>
+                        <span>{{ $karya->total_terjual }} terjual</span>
+                    </div>
+                    @endif
+
                     <div class="d-flex align-items-center gap-2 mb-3">
                         <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center" style="width:24px;height:24px;font-size:11px;background:#6C3483!important;">
                             {{ strtoupper(substr($karya->seniman->nama, 0, 1)) }}

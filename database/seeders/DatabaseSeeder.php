@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        // ===== ADMIN =====
+        // ===== ADMIN 1=====
         $admin = User::create([
             'nama'        => 'Admin Imagirupa',
             'email'       => 'admin@imagirupa.com',
@@ -27,6 +27,20 @@ class DatabaseSeeder extends Seeder
             'user_id' => $admin->id,
             'bio'     => 'Administrator sistem Imagirupa Art Market.',
             'kota'    => 'Pontianak',
+        ]);
+
+        // ===== ADMIN 2 =====
+        $admin = User::create([
+            'nama'        => 'Admin Imagirupa',
+            'email'       => 'admin@gmail.com',
+            'password'    => Hash::make('password'),
+            'role'        => 'admin',
+            'status_akun' => 'verified',
+        ]);
+        Profile::create([
+            'user_id' => $admin->id,
+            'bio'     => 'Administrator sistem Imagirupa Art Market.',
+            'kota'    => 'Kubu Raya',
         ]);
 
         // ===== SENIMAN 1 =====
